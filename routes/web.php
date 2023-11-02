@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MatchingController;
 use Inertia\Inertia;
 
 /*
@@ -34,6 +35,18 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/game', [GameController::class, "index"]);
+
+    // ゲーム作成画面
+    Route::get('/game/matching', [MatchingController::class, "create"])->name("game.matching");
+
+    // ゲーム参加画面
+    Route::get('/game/join', [MatchingController::class, "join"])->name("game.join");
+
+    // マッチング画面
+    Route::post('/game/matching', [MatchingController::class, "matching"]);
+
+    // ゲーム画面
+    Route::post('/game/board', [MatchingController::class, "board"])->name("game.board");
 });
+
 

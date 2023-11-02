@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('wool')->default(0);
             $table->integer('grain')->default(0);
             $table->integer('iron')->default(0);
+            $table->integer('order');
+            $table->integer('admin_player')->default(1);
             $table->timestamps();
         });
     }
